@@ -90,10 +90,20 @@ type PodQOSList struct {
 }
 
 type ResourceQOS struct {
-	CPUQOS    *CPUQOS    `json:"cpuQOS,omitempty"`
-	MemoryQOS *MemoryQOS `json:"memoryQOS,omitempty"`
-	NetIOQOS  *NetIOQOS  `json:"netIOQOS,omitempty"`
-	DiskIOQOS *DiskIOQOS `json:"diskIOQOS,omitempty"`
+	CPUQOS            *CPUQOS            `json:"cpuQOS,omitempty"`
+	MemoryQOS         *MemoryQOS         `json:"memoryQOS,omitempty"`
+	NetIOQOS          *NetIOQOS          `json:"netIOQOS,omitempty"`
+	DiskIOQOS         *DiskIOQOS         `json:"diskIOQOS,omitempty"`
+	MemoryCompression *MemoryCompression `json:"memoryCompression,omitempty"`
+}
+
+type MemoryCompression struct {
+	// +kubebuilder:validation:Default=false
+	Enable bool `json:"enable,omitempty"`
+
+	// +kubebuilder:validation:Minimum=0
+	// +kubebuilder:validation:Maximum=4
+	CompressionLevel int `json:"CompressionLevel,omitempty"`
 }
 
 type CPUQOS struct {
