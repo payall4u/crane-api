@@ -233,7 +233,7 @@ spec:
                     type: object
                   memoryCompression:
                     properties:
-                      CompressionLevel:
+                      compressionLevel:
                         maximum: 4
                         minimum: 0
                         type: integer

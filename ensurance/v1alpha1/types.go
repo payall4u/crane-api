@@ -103,7 +103,7 @@ type MemoryCompression struct {
 
 	// +kubebuilder:validation:Minimum=0
 	// +kubebuilder:validation:Maximum=4
-	CompressionLevel int `json:"CompressionLevel,omitempty"`
+	CompressionLevel int `json:"compressionLevel,omitempty"`
 }
 
 type CPUQOS struct {
