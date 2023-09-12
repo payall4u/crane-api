@@ -98,16 +98,35 @@ spec:
               netLimits:
                 description: NetLimits is the net IO limit in the node
                 properties:
+                  bpsMaxCpuLimitFactor:
+                    description: Factor to calculate max bandwith for pods(default
+                      is 1.5)
+                    type: string
+                  enableAutoConfiguration:
+                    description: Auto config net qos if enabled
+                    type: boolean
                   rxBpsMax:
                     format: int64
                     type: integer
                   rxBpsMin:
                     format: int64
                     type: integer
+                  rxBpsPerCpu:
+                    description: RX bandwith in bps per cpu
+                    format: int64
+                    type: integer
+                  skipIndependentEni:
+                    description: Skip setting limit for pod with independent ENI if
+                      enabled
+                    type: boolean
                   txBpsMax:
                     format: int64
                     type: integer
                   txBpsMin:
+                    format: int64
+                    type: integer
+                  txBpsPerCpu:
+                    description: TX bandwith in bps per cpu
                     format: int64
                     type: integer
                 required:

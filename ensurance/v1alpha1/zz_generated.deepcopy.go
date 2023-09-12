@@ -664,6 +664,31 @@ func (in *NetLimits) DeepCopyInto(out *NetLimits) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.SkipIndependentEni != nil {
+		in, out := &in.SkipIndependentEni, &out.SkipIndependentEni
+		*out = new(bool)
+		**out = **in
+	}
+	if in.EnableAutoConfiguration != nil {
+		in, out := &in.EnableAutoConfiguration, &out.EnableAutoConfiguration
+		*out = new(bool)
+		**out = **in
+	}
+	if in.RxBpsPerCpu != nil {
+		in, out := &in.RxBpsPerCpu, &out.RxBpsPerCpu
+		*out = new(int64)
+		**out = **in
+	}
+	if in.TxBpsPerCpu != nil {
+		in, out := &in.TxBpsPerCpu, &out.TxBpsPerCpu
+		*out = new(int64)
+		**out = **in
+	}
+	if in.BpsMaxCpuLimitFactor != nil {
+		in, out := &in.BpsMaxCpuLimitFactor, &out.BpsMaxCpuLimitFactor
+		*out = new(string)
+		**out = **in
+	}
 	return
 }
 

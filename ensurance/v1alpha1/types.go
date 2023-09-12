@@ -274,6 +274,17 @@ type NetLimits struct {
 	RXBpsMax *int64 `json:"rxBpsMax"`
 	TXBpsMin *int64 `json:"txBpsMin"`
 	TXBpsMax *int64 `json:"txBpsMax"`
+
+	// Skip setting limit for pod with independent ENI if enabled
+	SkipIndependentEni *bool `json:"skipIndependentEni,omitempty"`
+	// Auto config net qos if enabled
+	EnableAutoConfiguration *bool `json:"enableAutoConfiguration,omitempty"`
+	// RX bandwith in bps per cpu
+	RxBpsPerCpu *int64 `json:"rxBpsPerCpu,omitempty"`
+	// TX bandwith in bps per cpu
+	TxBpsPerCpu *int64 `json:"txBpsPerCpu,omitempty"`
+	// Factor to calculate max bandwith for pods(default is 1.5)
+	BpsMaxCpuLimitFactor *string `json:"bpsMaxCpuLimitFactor,omitempty"`
 }
 
 type MemLimit struct {
