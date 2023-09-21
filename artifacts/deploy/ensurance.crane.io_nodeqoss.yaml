@@ -38,6 +38,26 @@ spec:
           spec:
             description: NodeQOSSpec defines the desired status of NodeQOS
             properties:
+              diskIOLimits:
+                description: DiskIOLimits is the disk IO limits in the node
+                properties:
+                  localDiskDefaultLimit:
+                    description: Default local disk IO limits for pods
+                    properties:
+                      readBps:
+                        format: int64
+                        type: integer
+                      readIOps:
+                        format: int64
+                        type: integer
+                      writeBps:
+                        format: int64
+                        type: integer
+                      writeIOps:
+                        format: int64
+                        type: integer
+                    type: object
+                type: object
               elasticCpuLimit:
                 description: ElasticCpuLimit is the cpu limit for workloads using
                   elastic cpu in the node

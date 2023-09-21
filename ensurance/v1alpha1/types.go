@@ -267,6 +267,14 @@ type NodeQOSSpec struct {
 
 	// NetLimits is the net IO limit in the node
 	NetLimits NetLimits `json:"netLimits,omitempty"`
+
+	// DiskIOLimits is the disk IO limits in the node
+	DiskIOLimits *DiskIOLimits `json:"diskIOLimits,omitempty"`
+}
+
+type DiskIOLimits struct {
+	// Default local disk IO limits for pods
+	LocalDiskDefaultLimit *DiskIOLimit `json:"localDiskDefaultLimit,omitempty"`
 }
 
 type NetLimits struct {
