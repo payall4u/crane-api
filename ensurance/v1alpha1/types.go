@@ -90,11 +90,10 @@ type PodQOSList struct {
 }
 
 type ResourceQOS struct {
-	CPUQOS            *CPUQOS            `json:"cpuQOS,omitempty"`
-	MemoryQOS         *MemoryQOS         `json:"memoryQOS,omitempty"`
-	NetIOQOS          *NetIOQOS          `json:"netIOQOS,omitempty"`
-	DiskIOQOS         *DiskIOQOS         `json:"diskIOQOS,omitempty"`
-	MemoryCompression *MemoryCompression `json:"memoryCompression,omitempty"`
+	CPUQOS    *CPUQOS    `json:"cpuQOS,omitempty"`
+	MemoryQOS *MemoryQOS `json:"memoryQOS,omitempty"`
+	NetIOQOS  *NetIOQOS  `json:"netIOQOS,omitempty"`
+	DiskIOQOS *DiskIOQOS `json:"diskIOQOS,omitempty"`
 }
 
 type MemoryCompression struct {
@@ -172,6 +171,8 @@ type MemoryQOS struct {
 	MemAsyncReclaim   MemAsyncReclaim   `json:"memAsyncReclaim,omitempty"`
 	MemWatermark      MemWatermark      `json:"memWatermark,omitempty"`
 	MemPageCacheLimit MemPageCacheLimit `json:"memPageCacheLimit,omitempty"`
+
+	MemoryCompression MemoryCompression `json:"memoryCompression,omitempty"`
 }
 
 type MemPageCacheLimit struct {
