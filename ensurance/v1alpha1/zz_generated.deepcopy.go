@@ -536,6 +536,7 @@ func (in *MemoryQOS) DeepCopyInto(out *MemoryQOS) {
 	in.MemAsyncReclaim.DeepCopyInto(&out.MemAsyncReclaim)
 	in.MemWatermark.DeepCopyInto(&out.MemWatermark)
 	in.MemPageCacheLimit.DeepCopyInto(&out.MemPageCacheLimit)
+	out.MemoryCompression = in.MemoryCompression
 	return
 }
 
@@ -1060,11 +1061,6 @@ func (in *ResourceQOS) DeepCopyInto(out *ResourceQOS) {
 	if in.DiskIOQOS != nil {
 		in, out := &in.DiskIOQOS, &out.DiskIOQOS
 		*out = new(DiskIOQOS)
-		**out = **in
-	}
-	if in.MemoryCompression != nil {
-		in, out := &in.MemoryCompression, &out.MemoryCompression
-		*out = new(MemoryCompression)
 		**out = **in
 	}
 	return
