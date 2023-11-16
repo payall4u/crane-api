@@ -269,8 +269,15 @@ type NodeQOSSpec struct {
 	// MemoryLimit is the mem limit in the node
 	MemoryLimit MemLimit `json:"memLimit,omitempty"`
 
+	MemoryCompression NodeMemoryCompression `json:"memoryCompression,omitempty"`
+
 	// NetLimits is the net IO limit in the node
 	NetLimits NetLimits `json:"netLimits,omitempty"`
+}
+
+type NodeMemoryCompression struct {
+	// +kubebuilder:validation:Default=false
+	Enable bool `json:"enable,omitempty"`
 }
 
 type NetLimits struct {
