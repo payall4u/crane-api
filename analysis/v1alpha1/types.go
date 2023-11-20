@@ -44,6 +44,17 @@ const (
 	IdleNodeRecommender string = "IdleNode"
 )
 
+var (
+	AllRecommenderType []string
+)
+
+func init() {
+	AllRecommenderType = append(AllRecommenderType, ReplicasRecommender)
+	AllRecommenderType = append(AllRecommenderType, ResourceRecommender)
+	AllRecommenderType = append(AllRecommenderType, HPARecommender)
+	AllRecommenderType = append(AllRecommenderType, IdleNodeRecommender)
+}
+
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
@@ -332,6 +343,9 @@ type Recommender struct {
 
 	// Recommender's Name
 	Name string `json:"name"`
+	// Override Recommendation configs
+	// +optional
+	Config map[string]string `json:"config,omitempty"`
 }
 
 // NamespaceSelector describes how to select namespaces for recommend
@@ -352,6 +366,10 @@ type RecommendationRuleStatus struct {
 	// +optional
 	// +listType=atomic
 	Recommendations []RecommendationMission `json:"recommendations,omitempty"`
+
+	// RunNumber is the numbers of runs
+	// +optional
+	RunNumber int32 `json:"runNumber,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -5,6 +5,7 @@ package fake
 import (
 	analysisv1alpha1 "github.com/gocrane/api/analysis/v1alpha1"
 	autoscalingv1alpha1 "github.com/gocrane/api/autoscaling/v1alpha1"
+	co2ev1alpha1 "github.com/gocrane/api/co2e/v1alpha1"
 	ensurancev1alpha1 "github.com/gocrane/api/ensurance/v1alpha1"
 	predictionv1alpha1 "github.com/gocrane/api/prediction/v1alpha1"
 	topologyv1alpha1 "github.com/gocrane/api/topology/v1alpha1"
@@ -21,6 +22,7 @@ var codecs = serializer.NewCodecFactory(scheme)
 var localSchemeBuilder = runtime.SchemeBuilder{
 	analysisv1alpha1.AddToScheme,
 	autoscalingv1alpha1.AddToScheme,
+	co2ev1alpha1.AddToScheme,
 	ensurancev1alpha1.AddToScheme,
 	predictionv1alpha1.AddToScheme,
 	topologyv1alpha1.AddToScheme,
@@ -29,14 +31,14 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 // AddToScheme adds all types of this clientset into the given scheme. This allows composition
 // of clientsets, like in:
 //
-//   import (
-//     "k8s.io/client-go/kubernetes"
-//     clientsetscheme "k8s.io/client-go/kubernetes/scheme"
-//     aggregatorclientsetscheme "k8s.io/kube-aggregator/pkg/client/clientset_generated/clientset/scheme"
-//   )
+//	import (
+//	  "k8s.io/client-go/kubernetes"
+//	  clientsetscheme "k8s.io/client-go/kubernetes/scheme"
+//	  aggregatorclientsetscheme "k8s.io/kube-aggregator/pkg/client/clientset_generated/clientset/scheme"
+//	)
 //
-//   kclientset, _ := kubernetes.NewForConfig(c)
-//   _ = aggregatorclientsetscheme.AddToScheme(clientsetscheme.Scheme)
+//	kclientset, _ := kubernetes.NewForConfig(c)
+//	_ = aggregatorclientsetscheme.AddToScheme(clientsetscheme.Scheme)
 //
 // After this, RawExtensions in Kubernetes types will serialize kube-aggregator types
 // correctly.

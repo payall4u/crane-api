@@ -96,6 +96,15 @@ type ResourceQOS struct {
 	DiskIOQOS *DiskIOQOS `json:"diskIOQOS,omitempty"`
 }
 
+type MemoryCompression struct {
+	// +kubebuilder:validation:Default=false
+	Enable bool `json:"enable,omitempty"`
+
+	// +kubebuilder:validation:Minimum=0
+	// +kubebuilder:validation:Maximum=4
+	CompressionLevel int `json:"compressionLevel,omitempty"`
+}
+
 type CPUQOS struct {
 	// CPUPriority define the cpu priority for the pods.
 	// CPUPriority range [0,7], 0 is the highest level.
@@ -162,6 +171,8 @@ type MemoryQOS struct {
 	MemAsyncReclaim   MemAsyncReclaim   `json:"memAsyncReclaim,omitempty"`
 	MemWatermark      MemWatermark      `json:"memWatermark,omitempty"`
 	MemPageCacheLimit MemPageCacheLimit `json:"memPageCacheLimit,omitempty"`
+
+	MemoryCompression MemoryCompression `json:"memoryCompression,omitempty"`
 }
 
 type MemPageCacheLimit struct {
@@ -265,6 +276,8 @@ type NodeQOSSpec struct {
 	// MemoryLimit is the mem limit in the node
 	MemoryLimit MemLimit `json:"memLimit,omitempty"`
 
+	MemoryCompression NodeMemoryCompression `json:"memoryCompression,omitempty"`
+
 	// NetLimits is the net IO limit in the node
 	NetLimits NetLimits `json:"netLimits,omitempty"`
 
@@ -275,6 +288,11 @@ type NodeQOSSpec struct {
 type DiskIOLimits struct {
 	// Default local disk IO limits for pods
 	LocalDiskDefaultLimit *DiskIOLimit `json:"localDiskDefaultLimit,omitempty"`
+}
+
+type NodeMemoryCompression struct {
+	// +kubebuilder:validation:Default=false
+	Enable bool `json:"enable,omitempty"`
 }
 
 type NetLimits struct {
@@ -404,7 +422,7 @@ type MetricRule struct {
 	Value resource.Quantity `json:"value,omitempty"`
 }
 
-// NodeQOSEnsurancePolicyStatus defines the observed status of NodeQOSEnsurancePolicy
+// NodeQOSStatus defines the observed status of NodeQOS
 type NodeQOSStatus struct {
 }
 

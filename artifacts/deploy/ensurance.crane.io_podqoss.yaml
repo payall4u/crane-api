@@ -282,6 +282,15 @@ spec:
                         required:
                         - watermarkRatio
                         type: object
+                      memoryCompression:
+                        properties:
+                          compressionLevel:
+                            maximum: 4
+                            minimum: 0
+                            type: integer
+                          enable:
+                            type: boolean
+                        type: object
                     type: object
                   netIOQOS:
                     properties:
