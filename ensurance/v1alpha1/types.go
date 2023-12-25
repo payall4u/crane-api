@@ -226,6 +226,28 @@ type DiskIOLimit struct {
 	WriteBPS  int64 `json:"writeBps,omitempty"`
 }
 
+type LocalDiskIOLimit struct {
+	// readIOps for local disk, default is notset(0, no limit), minimum is 1000
+	// +optional
+	// +kubebuilder:validation:Minimum=1000
+	ReadIOPS int64 `json:"readIOps,omitempty"`
+
+	// writeIOps for local disk, default is notset(0, no limit), minimum is 1000
+	// +optional
+	// +kubebuilder:validation:Minimum=1000
+	WriteIOPS int64 `json:"writeIOps,omitempty"`
+
+	// readBps for local disk, default is notset(0, no limit), minimum is 1048576(1MiB)
+	// +optional
+	// +kubebuilder:validation:Minimum=1048576
+	ReadBPS int64 `json:"readBps,omitempty"`
+
+	// writeBps for local disk, default is notset(0, no limit), minimum is 1048576(1MiB)
+	// +optional
+	// +kubebuilder:validation:Minimum=1048576
+	WriteBPS int64 `json:"writeBps,omitempty"`
+}
+
 type PodQOSStatus struct {
 }
 
@@ -287,7 +309,7 @@ type NodeQOSSpec struct {
 
 type DiskIOLimits struct {
 	// Default local disk IO limits for pods
-	LocalDiskDefaultLimit *DiskIOLimit `json:"localDiskDefaultLimit,omitempty"`
+	LocalDiskDefaultLimit *LocalDiskIOLimit `json:"localDiskDefaultLimit,omitempty"`
 }
 
 type NodeMemoryCompression struct {
