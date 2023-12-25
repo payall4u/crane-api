@@ -45,16 +45,28 @@ spec:
                     description: Default local disk IO limits for pods
                     properties:
                       readBps:
+                        description: readBps for local disk, default is notset(0,
+                          no limit), minimum is 1048576(1MiB)
                         format: int64
+                        minimum: 1048576
                         type: integer
                       readIOps:
+                        description: readIOps for local disk, default is notset(0,
+                          no limit), minimum is 1000
                         format: int64
+                        minimum: 1000
                         type: integer
                       writeBps:
+                        description: writeBps for local disk, default is notset(0,
+                          no limit), minimum is 1048576(1MiB)
                         format: int64
+                        minimum: 1048576
                         type: integer
                       writeIOps:
+                        description: writeIOps for local disk, default is notset(0,
+                          no limit), minimum is 1000
                         format: int64
+                        minimum: 1000
                         type: integer
                     type: object
                 type: object
