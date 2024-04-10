@@ -290,6 +290,24 @@ spec:
                             type: integer
                           enable:
                             type: boolean
+                          oversold:
+                            default: Allow
+                            enum:
+                            - Transparent
+                            - None
+                            - Allow
+                            type: string
+                          preference:
+                            default: Tidy
+                            description: CompressionPreference provides a quick way
+                              to set the frequency, ratio and size of compression.
+                            enum:
+                            - Tidy
+                            - Normal
+                            type: string
+                        required:
+                        - oversold
+                        - preference
                         type: object
                     type: object
                   netIOQOS:

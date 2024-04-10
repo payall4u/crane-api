@@ -40,7 +40,7 @@ type PodQOSSpec struct {
 	// ResourceQOS describe the QOS limit for cpu,memory,netIO,diskIO and so on.
 	ResourceQOS ResourceQOS `json:"resourceQOS,omitempty"`
 
-	//QualityProbe defines the way to probe a pod
+	// QualityProbe defines the way to probe a pod
 	PodQualityProbe PodQualityProbe `json:"podQualityProbe,omitempty"`
 
 	// AllowedActions limits the set of actions that the pods is allowed to perform by NodeQOS
@@ -96,6 +96,20 @@ type ResourceQOS struct {
 	DiskIOQOS *DiskIOQOS `json:"diskIOQOS,omitempty"`
 }
 
+// CompressionPreference provides a quick way to set the frequency, ratio and size of compression.
+type CompressionPreference string
+
+type CompressionOversold string
+
+const (
+	PreferenceTiny   CompressionPreference = "Tiny"
+	PreferenceNormal CompressionPreference = "Normal"
+
+	OversoldTransparent CompressionOversold = "Transparent"
+	OversoldNone        CompressionOversold = "None"
+	OversoldAllow       CompressionOversold = "Allow"
+)
+
 type MemoryCompression struct {
 	// +kubebuilder:validation:Default=false
 	Enable bool `json:"enable,omitempty"`
@@ -103,6 +117,16 @@ type MemoryCompression struct {
 	// +kubebuilder:validation:Minimum=0
 	// +kubebuilder:validation:Maximum=4
 	CompressionLevel int `json:"compressionLevel,omitempty"`
+
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Enum=Tidy;Normal
+	// +kubebuilder:default=Tidy
+	Preference CompressionPreference `json:"preference"`
+
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Enum=Transparent;None;Allow
+	// +kubebuilder:default=Allow
+	Oversold CompressionOversold `json:"oversold"`
 }
 
 type CPUQOS struct {
@@ -468,7 +492,7 @@ type AvoidanceActionSpec struct {
 	// +optional
 	Throttle *ThrottleAction `json:"throttle,omitempty"`
 
-	//Eviction describes the eviction action
+	// Eviction describes the eviction action
 	// +optional
 	Eviction *EvictionAction `json:"eviction,omitempty"`
 
