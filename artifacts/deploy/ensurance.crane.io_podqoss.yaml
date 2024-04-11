@@ -304,6 +304,8 @@ spec:
                             enum:
                             - Tidy
                             - Normal
+                            - FileOnly
+                            - AnonOnly
                             type: string
                         required:
                         - oversold

@@ -102,8 +102,10 @@ type CompressionPreference string
 type CompressionOversold string
 
 const (
-	PreferenceTiny   CompressionPreference = "Tiny"
-	PreferenceNormal CompressionPreference = "Normal"
+	PreferenceTiny     CompressionPreference = "Tiny"
+	PreferenceNormal   CompressionPreference = "Normal"
+	PreferenceFileOnly CompressionPreference = "FileOnly"
+	PreferenceAnonOnly CompressionPreference = "AnonOnly"
 
 	OversoldTransparent CompressionOversold = "Transparent"
 	OversoldNone        CompressionOversold = "None"
@@ -119,7 +121,7 @@ type MemoryCompression struct {
 	CompressionLevel int `json:"compressionLevel,omitempty"`
 
 	// +kubebuilder:validation:Type=string
-	// +kubebuilder:validation:Enum=Tidy;Normal
+	// +kubebuilder:validation:Enum=Tidy;Normal;FileOnly;AnonOnly
 	// +kubebuilder:default=Tidy
 	Preference CompressionPreference `json:"preference"`
 
