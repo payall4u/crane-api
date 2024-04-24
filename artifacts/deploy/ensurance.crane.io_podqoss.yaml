@@ -298,11 +298,11 @@ spec:
                             - Allow
                             type: string
                           preference:
-                            default: Tidy
+                            default: Tiny
                             description: CompressionPreference provides a quick way
                               to set the frequency, ratio and size of compression.
                             enum:
-                            - Tidy
+                            - Tiny
                             - Normal
                             - FileOnly
                             - AnonOnly

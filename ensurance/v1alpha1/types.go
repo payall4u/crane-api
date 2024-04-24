@@ -121,8 +121,8 @@ type MemoryCompression struct {
 	CompressionLevel int `json:"compressionLevel,omitempty"`
 
 	// +kubebuilder:validation:Type=string
-	// +kubebuilder:validation:Enum=Tidy;Normal;FileOnly;AnonOnly
-	// +kubebuilder:default=Tidy
+	// +kubebuilder:validation:Enum=Tiny;Normal;FileOnly;AnonOnly
+	// +kubebuilder:default=Tiny
 	Preference CompressionPreference `json:"preference"`
 
 	// +kubebuilder:validation:Type=string
