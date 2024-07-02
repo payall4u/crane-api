@@ -307,9 +307,6 @@ spec:
                             - FileOnly
                             - AnonOnly
                             type: string
-                        required:
-                        - oversold
-                        - preference
                         type: object
                     type: object
                   netIOQOS:

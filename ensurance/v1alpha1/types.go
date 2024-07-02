@@ -123,11 +123,13 @@ type MemoryCompression struct {
 	// +kubebuilder:validation:Type=string
 	// +kubebuilder:validation:Enum=Tiny;Normal;FileOnly;AnonOnly
 	// +kubebuilder:default=Tiny
+	// +optional
 	Preference CompressionPreference `json:"preference"`
 
 	// +kubebuilder:validation:Type=string
 	// +kubebuilder:validation:Enum=Transparent;None;Allow
 	// +kubebuilder:default=Allow
+	// +optional
 	Oversold CompressionOversold `json:"oversold"`
 }
 
